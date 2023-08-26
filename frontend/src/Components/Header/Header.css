@@ -1,0 +1,16 @@
+.header_search_section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    outline: 1px solid lightgrey;
+}
+
+.header_logo{
+    height: auto;
+    width: 75px;
+}
+
+.header_nav{
+    display: flex;
+    gap: 10px;
+}
