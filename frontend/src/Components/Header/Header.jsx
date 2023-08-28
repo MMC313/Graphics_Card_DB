@@ -1,6 +1,7 @@
 import logo from '../../Pictures/Logo.png'
-import { TextField, InputAdornment, IconButton, Typography} from '@mui/material'
-import { Search } from '@mui/icons-material'
+import { TextField, InputAdornment, IconButton, Typography, Breadcrumbs, Link,} from '@mui/material'
+import { Search} from '@mui/icons-material'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import './Header.css'
 
 export default function Header(){
@@ -24,15 +25,16 @@ export default function Header(){
                 />
             </div>
             <div className='header_nav'>
-                <Typography>{}Products</Typography>
-                <Typography>/</Typography>
-                <Typography>{}Graphics Cards</Typography>
-                <Typography>/</Typography>
-                <Typography>{}Architecture</Typography>
-                <Typography>/</Typography>
-                <Typography>{}Series</Typography>
-                <Typography>/</Typography>
-                <Typography>{}Graphics Card</Typography>
+            <Breadcrumbs
+                separator={<NavigateNextIcon fontSize="small" />}
+                aria-label="breadcrumb"
+                className='header_breadcrumb'
+            >
+                <Typography>{}Nvidia Graphics Cards</Typography>
+                <Typography>{}Maxwell Architecture</Typography>
+                <Typography>{}Ada LoveLace Series</Typography>
+                <Typography>{}Geforce RTX 4090 Graphics Card</Typography>
+            </Breadcrumbs>
             </div>
         </>
     )
