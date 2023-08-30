@@ -7,7 +7,7 @@ body{
     align-items: center;
     justify-content: space-between;
     outline: 1px solid lightgrey;
-    padding: 0 7px 0 0
+    padding: 0 7px 0 0;
 }
 
 .header_logo{
@@ -18,14 +18,15 @@ body{
 .header_nav{
     display: flex;
     gap: 10px;
-    outline: 1px solid lightgrey;
-
-    padding: 7px 7px 7px 7px;
+    overflow: auto;
 }
 
-.header_breadcrumb{
-    display: flex;
-    overflow: auto;
-    white-space: nowrap;
+
+.MuiBreadcrumbs-ol{
+    flex-wrap: nowrap;
     
+}
+
+.header_nav_crumb{
+    white-space: nowrap;
 }
