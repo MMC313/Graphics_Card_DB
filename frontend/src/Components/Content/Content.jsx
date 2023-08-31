@@ -93,9 +93,12 @@ const bdRows = [
 
 
 
-export default function Content(){
+export default function Content(props){
 
-    const [gpuInfo,setInfo] = useState([])
+    let testVal = props.query
+    const [gpuInfo,setInfo] = useState("")
+
+    console.log(testVal)
 
     return(
         <StyledEngineProvider injectFirst>
