@@ -24,9 +24,15 @@ body{
 
 .MuiBreadcrumbs-ol{
     flex-wrap: nowrap;
-    
+    padding: 0 1em 0;
 }
 
+
 .header_nav_crumb{
+    font-size: .875rem;
+    color: rgb(146, 0, 0);
     white-space: nowrap;
+    padding: 0.66em 0.15em;
+    margin: 1px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
