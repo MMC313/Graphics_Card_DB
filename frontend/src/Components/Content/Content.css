@@ -36,12 +36,12 @@
 }
 
 .MuiTable-root {
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .MuiTableCell-root{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1rem;
+    font-size: .9rem;
 }
 
 
@@ -75,10 +75,10 @@
 }
 
 .content_specs_head{
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     line-height: 1.5rem;
     font-weight: 300;
-    font-stretch: ultra-condensed;
+    font-stretch:ultra-condensed;
     border: none;
 }
 
