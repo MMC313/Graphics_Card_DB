@@ -5,8 +5,17 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import { StyledEngineProvider } from '@mui/material/styles';
 import './Header.css'
 
-export default function Header(){
+export default function Header(props){
 
+    console.log("Header rerender")
+
+    let setQuery = props.setQuery
+
+    function handleEnter(event){
+        if(event.key === 'Enter'){
+            setQuery(event.target.value)
+        }
+    }
 
     return(
         <StyledEngineProvider injectFirst>
@@ -16,6 +25,7 @@ export default function Header(){
                     <TextField
                         id="input-with-icon-textfield"
                         label="Search Database"
+                        onKeyDown={handleEnter}
                         InputProps={{
                         startAdornment: (
                             <IconButton position="start">
