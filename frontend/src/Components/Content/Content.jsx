@@ -16,89 +16,91 @@ function createData(name, value) {
   return { name, value};
 }
 
-const gpRows = [
-  createData('GPU Name', 159),
-  createData('GPU Variant', 237),
-  createData('Architecture', 262),
-  createData('Foundry', 305),
-  createData('Process Size', 356),
-  createData('Transistors', 101),
-  createData('Die Size', 69)
-];
-
-const gcRows = [
-    createData('Release Date', 159),
-    createData('Generation', 237),
-    createData('Predecessor', 262),
-    createData('Successor', 305),
-    createData('Production', 356),
-    createData('Launce Price', 101),
-    createData('Bus Interface', 69)
-]
-
-
-const csRows = [
-    createData('Base Clock', 159),
-    createData('Boost Clock', 237),
-    createData('Memory Clock', 262),
-]
-
-
-const mRows = [
-    createData('Memory Size', 159),
-    createData('Memory Type', 237),
-    createData('Memory Bus', 262),
-    createData('Bandwidth', 305)
-]
-
-
-const rcRows = [
-    createData('Shading Units', 159),
-    createData('Generation  ', 237),
-    createData('Predecessor', 262),
-    createData('Successor', 305),
-    createData('Production', 356)
-]
-
-const pRows = [
-    createData('Release Date', 159),
-    createData('Generation', 237),
-    createData('Predecessor', 262),
-    createData('Successor', 305),
-    createData('Production', 356),
-    createData('Launce Price', 101),
-    createData('Bus Interface', 69)
-]
- 
-const gfRows = [
-    createData('DirectX Version', 159),
-    createData('OpenGL Version', 237),
-    createData('OpenCL Version', 262),
-    createData('Vulkan Version', 305),
-
-]
-
-
-const bdRows = [
-    createData('Slot Width', 159),
-    createData('Length', 237),
-    createData('Width', 262),
-    createData('Height', 305),
-    createData('TDP', 356),
-    createData('Suggest PSU', 69),
-    createData('Power Connectors',1),
-    createData('Board Number',69)
-]
 
 
 
 
 export default function Content(props){
 
-    let testVal = props.query
-    const [gpuInfo,setInfo] = useState("")
+    console.log("Content rerender")
 
-    console.log(testVal)
+    let gpuSpecs = props.data
+    console.log(gpuSpecs)
+
+    const gpRows = [
+        createData('GPU Name', gpuSpecs.graphics_processor.gpu_name),
+        createData('GPU Variant',  gpuSpecs.graphics_processor.gpu_variant),
+        createData('Architecture',  gpuSpecs.graphics_processor.architecture),
+        createData('Foundry',  gpuSpecs.graphics_processor.foundry),
+        createData('Process Size',  gpuSpecs.graphics_processor.process_size),
+        createData('Transistors',  gpuSpecs.graphics_processor.transistors),
+        createData('Die Size',  gpuSpecs.graphics_processor.die_size)
+      ];
+      
+      const gcRows = [
+          createData('Release Date', 159),
+          createData('Generation', 237),
+          createData('Predecessor', 262),
+          createData('Successor', 305),
+          createData('Production', 356),
+          createData('Launce Price', 101),
+          createData('Bus Interface', 69)
+      ]
+      
+      
+      const csRows = [
+          createData('Base Clock', 159),
+          createData('Boost Clock', 237),
+          createData('Memory Clock', 262),
+      ]
+      
+      
+      const mRows = [
+          createData('Memory Size', 159),
+          createData('Memory Type', 237),
+          createData('Memory Bus', 262),
+          createData('Bandwidth', 305)
+      ]
+      
+      
+      const rcRows = [
+          createData('Shading Units', 159),
+          createData('Generation  ', 237),
+          createData('Predecessor', 262),
+          createData('Successor', 305),
+          createData('Production', 356)
+      ]
+      
+      const pRows = [
+          createData('Release Date', 159),
+          createData('Generation', 237),
+          createData('Predecessor', 262),
+          createData('Successor', 305),
+          createData('Production', 356),
+          createData('Launce Price', 101),
+          createData('Bus Interface', 69)
+      ]
+       
+      const gfRows = [
+          createData('DirectX Version', 159),
+          createData('OpenGL Version', 237),
+          createData('OpenCL Version', 262),
+          createData('Vulkan Version', 305),
+      
+      ]
+      
+      
+      const bdRows = [
+          createData('Slot Width', 159),
+          createData('Length', 237),
+          createData('Width', 262),
+          createData('Height', 305),
+          createData('TDP', 356),
+          createData('Suggest PSU', 69),
+          createData('Power Connectors',1),
+          createData('Board Number',69)
+      ]
+      
 
     return(
         <StyledEngineProvider injectFirst>
