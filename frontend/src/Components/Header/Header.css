@@ -15,6 +15,10 @@ body{
     width: 75px;
 }
 
+.header_searchfield{
+    background-color: rgb(228, 228, 228);
+}
+
 .header_nav{
     display: flex;
     gap: 10px;
@@ -35,4 +39,11 @@ body{
     padding: 0.66em 0.15em;
     margin: 1px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media (min-width: 1000px){
+    #input-with-icon-textfield{
+        width: 25vw;
+    }
+    
 }
