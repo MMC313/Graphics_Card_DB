@@ -1,3 +1,7 @@
+
+
+
+
 .content_header{
     background-color: rgb(126, 0, 0);
     padding: 2rem 0 0 0;
@@ -82,5 +86,38 @@
     border: none;
 }
 
+.content_section_nav_group{
+    display: none;
+}
 
 
+@media (min-width: 1000px){
+
+    .content_info{
+        display: flex;
+    }
+
+    .content_section_nav_group{
+        display: flex;
+        position: sticky;
+        top: 0;
+        width: 25%;
+        align-self: flex-start;
+    }
+
+    .content_specs{
+        width: 75%;
+    }
+
+    .content_specs_value{
+        display: flex;
+        justify-content: left;
+    }
+
+    .MuiTableCell-root {
+        width: 50%;
+        white-space: nowrap;
+    }
+
+
+}
