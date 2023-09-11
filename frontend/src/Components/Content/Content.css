@@ -3,16 +3,33 @@
 
 
 .content_header{
-    background-color: rgb(126, 0, 0);
+    background-color:#00285a;
     padding: 2rem 0 0 0;
 }
 
 .content_header_info{
     display: flex;
     color: #fff;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
+
+.content_header_nav{
+}
+
+.content_header_nav_group{
+    display: flex;
+    justify-content: center;
+}
+
+.content_header_nav_group > button{
+    background-color: #fff;
+    border-radius: 0;
+}
+
+
     
 
 .content_header_info_headline{
@@ -95,18 +112,42 @@
 
     .content_info{
         display: flex;
+        padding: 0 15px 0 15px;
+
+    }
+
+    .content_header_nav{
+        display: block;
+    
+    }
+
+    #simple-tabpanel-0{
+        background-color: #fff;
+    }
+
+    .content_header_info{
+        margin-bottom: 32px;
+    }
+
+    .content_header_nav_group{
+        display: flex;
+        justify-content: start;
     }
 
     .content_section_nav_group{
         display: flex;
         position: sticky;
-        top: 0;
+        top: 32px;
+        margin-top: 32px;
         width: 25%;
         align-self: flex-start;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 
     .content_specs{
         width: 75%;
+        margin-top: 16px;
     }
 
     .content_specs_value{

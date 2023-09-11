@@ -1,5 +1,8 @@
-import {Table, Typography, Button, ButtonGroup, TextField, InputAdornment, IconButton, Breadcrumbs, Link} from '@mui/material'
+import {Table, Typography, Button, ButtonGroup, TextField, InputAdornment, IconButton, Breadcrumbs, Link, Box} from '@mui/material'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -12,15 +15,53 @@ import LoadInfo from '../../Functions/LoadInfo.jsx'
 import Logo from '../../Pictures/Logo.png'
 import { useEffect, useState } from 'react';
 import ScrollIntoView from 'react-scroll-into-view'
+import React from 'react';
 
-
-
+function CustomTabPanel(props) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+  
+  CustomTabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+  };
+  
+  function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
 
 function createData(name, value) {
   return { name, value};
 }
 
 export default function Content(props){
+
+
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
     console.log("Content rerender")
     
@@ -137,226 +178,239 @@ export default function Content(props){
                     
                             </div>
                         </div>
-                        <div>
-                            <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                                <Button>Specifications</Button>
-                                <Button>Images</Button>
-                            </ButtonGroup>
+                        <div className='content_header_nav'>
+                            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                                    <Tab label="Item One" {...a11yProps(0)} />
+                                    <Tab label="Item Two" {...a11yProps(1)} />
+                                </Tabs>
+                            </Box>
+                            <CustomTabPanel value={value} index={0}>
+                            
+                                <div className='content_info'>
+                                    <div className='content_section_nav_group'>
+                                        <ButtonGroup variant="text" aria-label="outlined primary button group" className='content_section_nav' orientation='vertical'>
+                                            <ScrollIntoView selector='.graphics_processor_head'>
+                                                <Button>Graphics Processor</Button>
+                                            </ScrollIntoView>
+                                            <ScrollIntoView selector='.graphics_card_head'>
+                                                <Button>Graphics Card</Button>
+                                            </ScrollIntoView>
+                                            <ScrollIntoView selector='.clock_speeds_head'>
+                                                <Button>Clock Speeds</Button>
+                                            </ScrollIntoView>
+                                            <ScrollIntoView selector='.memory_head'>
+                                                <Button>Memory</Button>
+                                            </ScrollIntoView>
+                                            <ScrollIntoView selector='.render_config_head'>
+                                                <Button>Render Config</Button>
+                                            </ScrollIntoView>
+                                            <ScrollIntoView selector='.performance_head'>
+                                                <Button>Performance</Button>
+                                            </ScrollIntoView>
+                                            <ScrollIntoView selector='.graphics_features_head'>
+                                                <Button>Graphics Features</Button>
+                                            </ScrollIntoView>
+                                            <ScrollIntoView selector='.board_design_head'>
+                                                <Button>Board Design</Button>
+                                            </ScrollIntoView>
+                                    
+                                        </ButtonGroup>
+                                    </div>
+                                    <div className='content_specs'>
+                                        <TableContainer component={Paper}>
+                                            <Table aria-label="simple table">
+                                                <TableHead className='content_tableHead'>
+                                                    <TableRow>
+                                                        <TableCell className='content_specs_headcell'>
+                                                            <Typography variant='h6' className='content_specs_head graphics_processor_head'>Graphics Processor</Typography>
+                                                        </TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                {gpRows.map((row) => (
+                                                    <TableRow
+                                                        key={row.name}
+                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+                                                        >
+                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                            {row.name}
+                                                        </TableCell>
+                                                        <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                                </TableBody>
+                                            </Table>
+                                            <Table aria-label="simple table">
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TableCell>
+                                                            <Typography variant='h6' className='content_specs_head graphics_card_head'>Graphics Card</Typography>
+                                                        </TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                {gcRows.map((row) => (
+                                                    <TableRow
+                                                        key={row.name}
+                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+                                                        >
+                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                            {row.name}
+                                                        </TableCell>
+                                                        <TableCell  className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                                </TableBody>
+                                            </Table>
+                                            <Table aria-label="simple table">
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TableCell>
+                                                            <Typography variant='h6' className='content_specs_head clock_speeds_head'>Clock Speeds</Typography>
+                                                        </TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                {csRows.map((row) => (
+                                                    <TableRow
+                                                        key={row.name}
+                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+                                                        >
+                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                            {row.name}
+                                                        </TableCell>
+                                                        <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                                </TableBody>
+                                            </Table>
+                                            <Table aria-label="simple table">
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TableCell>
+                                                            <Typography variant='h6' className='content_specs_head memory_head'>Memory</Typography>
+                                                        </TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                {mRows.map((row) => (
+                                                    <TableRow
+                                                        key={row.name}
+                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+                                                        >
+                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                            {row.name}
+                                                        </TableCell>
+                                                        <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                                </TableBody>
+                                            </Table>
+                                            <Table aria-label="simple table">
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TableCell>
+                                                            <Typography variant='h6' className='content_specs_head render_config_head'>Render Config</Typography>
+                                                        </TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                {rcRows.map((row) => (
+                                                    <TableRow
+                                                        key={row.name}
+                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+                                                        >
+                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                            {row.name}
+                                                        </TableCell>
+                                                        <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                                </TableBody>
+                                            </Table>
+                                            <Table aria-label="simple table">
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TableCell>
+                                                            <Typography variant='h6' className='content_specs_head performance_head'>Performance</Typography>
+                                                        </TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                {pRows.map((row) => (
+                                                    <TableRow
+                                                        key={row.name}
+                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+                                                        >
+                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                            {row.name}
+                                                        </TableCell>
+                                                        <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                                </TableBody>
+                                            </Table>
+                                            <Table aria-label="simple table">
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TableCell>
+                                                            <Typography variant='h6' className='content_specs_head graphics_features_head'>Graphics Features</Typography>
+                                                        </TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                {gfRows.map((row) => (
+                                                    <TableRow
+                                                        key={row.name}
+                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+                                                        >
+                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                            {row.name}
+                                                        </TableCell>
+                                                        <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                                </TableBody>
+                                            </Table>
+                                            <Table aria-label="simple table">
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TableCell>
+                                                            <Typography variant='h6' className='content_specs_head board_design_head'>Board Design</Typography>
+                                                        </TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                {bdRows.map((row) => (
+                                                    <TableRow
+                                                        key={row.name}
+                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+                                                        >
+                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                            {row.name}
+                                                        </TableCell>
+                                                        <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                                </TableBody>
+                                            </Table>
+                                        </TableContainer>
+                                    </div>
+                                </div>
+
+                            </CustomTabPanel>
+                            <CustomTabPanel value={value} index={1}>
+                                Images
+                            </CustomTabPanel>
                         </div>
+
+                        
                     </div>
 
-                    <div className='content_info'>
-                       
-                        <div className='content_section_nav_group'>
-                            <ButtonGroup variant="contained" aria-label="outlined primary button group" className='content_section_nav' orientation='vertical'>
-                                <ScrollIntoView selector='.graphics_processor_head'>
-                                    <Button>Graphics Processor</Button>
-                                </ScrollIntoView>
-                                <ScrollIntoView selector='.graphics_card_head'>
-                                    <Button>Graphics Card</Button>
-                                </ScrollIntoView>
-                                <ScrollIntoView selector='.clock_speeds_head'>
-                                    <Button>Clock Speeds</Button>
-                                </ScrollIntoView>
-                                <ScrollIntoView selector='.memory_head'>
-                                    <Button>Memory</Button>
-                                </ScrollIntoView>
-                                <ScrollIntoView selector='.render_config_head'>
-                                    <Button>Render Config</Button>
-                                </ScrollIntoView>
-                                <ScrollIntoView selector='.performance_head'>
-                                    <Button>Performance</Button>
-                                </ScrollIntoView>
-                                <ScrollIntoView selector='.graphics_features_head'>
-                                    <Button>Graphics Features</Button>
-                                </ScrollIntoView>
-                                <ScrollIntoView selector='.board_design_head'>
-                                    <Button>Board Design</Button>
-                                </ScrollIntoView>
-                                
-                            </ButtonGroup>
-                        </div>
+                    <div className='content_info'>  
 
-                        <div className='content_specs'>
-                            <TableContainer component={Paper}>
-                                <Table aria-label="simple table">
-                                    <TableHead className='content_tableHead'>
-                                        <TableRow>
-                                            <TableCell className='content_specs_headcell'>
-                                                <Typography variant='h6' className='content_specs_head graphics_processor_head'>Graphics Processor</Typography>
-                                            </TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                    {gpRows.map((row) => (
-                                        <TableRow
-                                            key={row.name}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
-                                            >
-                                            <TableCell component="th" scope="row" sx={{border:"none"}}>
-                                                {row.name}
-                                            </TableCell>
-                                            <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                                <Table aria-label="simple table">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>
-                                                <Typography variant='h6' className='content_specs_head graphics_card_head'>Graphics Card</Typography>
-                                            </TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                    {gcRows.map((row) => (
-                                        <TableRow
-                                            key={row.name}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
-                                            >
-                                            <TableCell component="th" scope="row" sx={{border:"none"}}>
-                                                {row.name}
-                                            </TableCell>
-                                            <TableCell  className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                                <Table aria-label="simple table">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>
-                                                <Typography variant='h6' className='content_specs_head clock_speeds_head'>Clock Speeds</Typography>
-                                            </TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                    {csRows.map((row) => (
-                                        <TableRow
-                                            key={row.name}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
-                                            >
-                                            <TableCell component="th" scope="row" sx={{border:"none"}}>
-                                                {row.name}
-                                            </TableCell>
-                                            <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                                <Table aria-label="simple table">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>
-                                                <Typography variant='h6' className='content_specs_head mmemory_head'>Memory</Typography>
-                                            </TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                    {mRows.map((row) => (
-                                        <TableRow
-                                            key={row.name}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
-                                            >
-                                            <TableCell component="th" scope="row" sx={{border:"none"}}>
-                                                {row.name}
-                                            </TableCell>
-                                            <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                                <Table aria-label="simple table">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>
-                                                <Typography variant='h6' className='content_specs_head render_config_head'>Render Config</Typography>
-                                            </TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                    {rcRows.map((row) => (
-                                        <TableRow
-                                            key={row.name}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
-                                            >
-                                            <TableCell component="th" scope="row" sx={{border:"none"}}>
-                                                {row.name}
-                                            </TableCell>
-                                            <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                                <Table aria-label="simple table">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>
-                                                <Typography variant='h6' className='content_specs_head performance_head'>Performance</Typography>
-                                            </TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                    {pRows.map((row) => (
-                                        <TableRow
-                                            key={row.name}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
-                                            >
-                                            <TableCell component="th" scope="row" sx={{border:"none"}}>
-                                                {row.name}
-                                            </TableCell>
-                                            <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                                <Table aria-label="simple table">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>
-                                                <Typography variant='h6' className='content_specs_head graphics_features_head'>Graphics Features</Typography>
-                                            </TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                    {gfRows.map((row) => (
-                                        <TableRow
-                                            key={row.name}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
-                                            >
-                                            <TableCell component="th" scope="row" sx={{border:"none"}}>
-                                                {row.name}
-                                            </TableCell>
-                                            <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                                <Table aria-label="simple table">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>
-                                                <Typography variant='h6' className='content_specs_head board_design_head'>Board Design</Typography>
-                                            </TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                    {bdRows.map((row) => (
-                                        <TableRow
-                                            key={row.name}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
-                                            >
-                                            <TableCell component="th" scope="row" sx={{border:"none"}}>
-                                                {row.name}
-                                            </TableCell>
-                                            <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
-                        </div>
+                        
                     </div>
                 </>
             </StyledEngineProvider>
