@@ -4,10 +4,9 @@ body{
 
 .header_search_section{
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
     outline: 1px solid lightgrey;
-    padding: 0 7px 0 0;
 }
 
 .header_logo{
@@ -16,7 +15,7 @@ body{
 }
 
 .header_searchfield{
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(235, 235, 235);
 }
 
 .header_nav{
@@ -34,7 +33,7 @@ body{
 
 .header_nav_crumb{
     font-size: .875rem;
-    color: rgb(146, 0, 0);
+    color: #004497;
     white-space: nowrap;
     padding: 0.66em 0.15em;
     margin: 1px;
