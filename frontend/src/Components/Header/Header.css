@@ -6,7 +6,10 @@ body{
     display: flex;
     /* align-items: center; */
     justify-content: space-between;
+    align-items: center;
     outline: 1px solid lightgrey;
+    background-color: rgb(235, 235, 235);
+    
 }
 
 .header_logo{
@@ -14,9 +17,11 @@ body{
     width: 75px;
 }
 
-.header_searchfield{
-    background-color: rgb(235, 235, 235);
+.header_searchfield{    
+    width: 250px;
 }
+
+
 
 .header_nav{
     display: flex;
