@@ -12,50 +12,54 @@ import Paper from '@mui/material/Paper';
 import { StyledEngineProvider } from '@mui/material/styles';
 import './Content.css'
 import LoadInfo from '../../Functions/LoadInfo.jsx'
-import Logo from '../../Pictures/Logo.png'
 import { useEffect, useState } from 'react';
 import ScrollIntoView from 'react-scroll-into-view'
 import React from 'react';
+import AMD from '../../Pictures/AMD.png'
+import Nvidia from '../../Pictures/Nvidia.png'
+import Intel from '../../Pictures/Intel.png'
+import Missing from '../../Pictures/Missing.jpeg'
 
-function CustomTabPanel(props) {
-    const { children, value, index, ...other } = props;
-  
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    );
-  }
-  
-  CustomTabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-  };
-  
-  function a11yProps(index) {
-    return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`,
-    };
-  }
 
-function createData(name, value) {
-  return { name, value};
-}
 
 export default function Content(props){
 
+    function CustomTabPanel(props) {
+        const { children, value, index, ...other } = props;
+      
+        return (
+          <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+          >
+            {value === index && (
+              <Box sx={{ p: 3 }}>
+                <Typography>{children}</Typography>
+              </Box>
+            )}
+          </div>
+        );
+      }
+      
+      CustomTabPanel.propTypes = {
+        children: PropTypes.node,
+        index: PropTypes.number.isRequired,
+        value: PropTypes.number.isRequired,
+      };
+      
+      function a11yProps(index) {
+        return {
+          id: `simple-tab-${index}`,
+          'aria-controls': `simple-tabpanel-${index}`,
+        };
+      }
+    
+    function createData(name, value) {
+      return { name, value};
+    }
 
     const [value, setValue] = React.useState(0);
 
@@ -72,15 +76,26 @@ export default function Content(props){
     useEffect(()=>{
         LoadInfo(query).then((response)=>{
             setGpuSpec(response)
-            console.log(response)
         })
     },[query])
 
-    if(gpuSpec === null){
+    if(gpuSpec === null || gpuSpec === undefined){
         return <div>Loading...</div>
     }else{
 
+        console.log(gpuSpec)
+
         console.log("defined")
+
+        let logo;
+
+        if(gpuSpec.gpu_name.includes("Intel")){
+            logo = Intel
+        }else if(gpuSpec.gpu_name.includes("NVIDIA")){
+            logo = Nvidia
+        }else if (gpuSpec.gpu_name.includes("AMD")){
+            logo = AMD
+        }else{ logo = Missing}
 
         const gpRows = [
             createData('GPU Name', gpuSpec.graphics_processor.gpu_name),
@@ -171,21 +186,51 @@ export default function Content(props){
                     </div>
                     <div className='content_header'>
                         <div className='content_header_info'>
-                            <img src={Logo} alt="" className='content_cardheader_image'/>
+                            <img src={logo} alt="" className='content_cardheader_image'/>
                             <div>
                                 <Typography variant='h3' className='content_header_info_headline'>{gpuSpec.gpu_name}</Typography>
-                                <Typography variant='subtitle1' className='content_header_info_subtitle'>{gpuSpec.memory.memory_size + gpuSpec.memory.memory_type} Graphics Card</Typography>
+                                <Typography variant='subtitle1' className='content_header_info_subtitle'>{gpuSpec.memory.memory_size +" "+ gpuSpec.memory.memory_type} Graphics Card</Typography>
                     
+                            </div>
+                            <div class="content_header_stats_icons">
+                                <div class="processor content_header_stats_icon">
+                                    <div class="processor_val">{gpuSpec.graphics_processor.gpu_name}</div>
+                                    <div class="content_header_stats_icons_labels" >GRAPHICS PROCESSOR</div>
+                                </div>
+                                <div class="cores content_header_stats_icon">
+                                    <div class="cores_val">{gpuSpec.render_config.shading_units}</div>
+                                    <div class="content_header_stats_icons_labels">CORES</div>
+                                </div>
+                                <div class="tmus content_header_stats_icon">
+                                    <div class="tmus_val">{gpuSpec.render_config.tmus}</div>
+                                    <div class="content_header_stats_icons_labels" >TMUS</div>
+                                </div>
+                                <div class="rops content_header_stats_icon">
+                                    <div class="rops_val">{gpuSpec.render_config.rops}</div>
+                                    <div class="content_header_stats_icons_labels">ROPS</div>
+                                </div>
+                                <div class="memory_size content_header_stats_icon">
+                                    <div class="memory_size_val">{gpuSpec.memory.memory_size}</div>
+                                    <div class="content_header_stats_icons_labels" >MEMORY SIZE</div>
+                                </div>
+                                <div class="memory_type content_header_stats_icon">
+                                    <div class="memory_type_val">{gpuSpec.memory.memory_type}</div>
+                                    <div class="content_header_stats_icons_labels" >MEMORY TYPE</div>
+                                </div>
+                                <div class="bus_width content_header_stats_icon">
+                                    <div class="bus_width_val">{gpuSpec.memory.memory_bus}</div>
+                                    <div class="content_header_stats_icons_labels" >BUS WIDTH</div>
+                                </div>
                             </div>
                         </div>
                         <div className='content_header_nav'>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                                    <Tab label="Item One" {...a11yProps(0)} />
-                                    <Tab label="Item Two" {...a11yProps(1)} />
+                                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" className='content_header_tabs'>
+                                    <Tab className='content_header_tab' label="Specifications" {...a11yProps(0)} />
+                                    <Tab className='content_header_tab' label="Images" {...a11yProps(1)} />
                                 </Tabs>
                             </Box>
-                            <CustomTabPanel value={value} index={0}>
+                            <CustomTabPanel value={value} index={0} className="content_tabs" >
                             
                                 <div className='content_info'>
                                     <div className='content_section_nav_group'>
@@ -218,7 +263,7 @@ export default function Content(props){
                                         </ButtonGroup>
                                     </div>
                                     <div className='content_specs'>
-                                        <TableContainer component={Paper}>
+                                        <TableContainer component={Paper} className='content_specs_inner'>
                                             <Table aria-label="simple table">
                                                 <TableHead className='content_tableHead'>
                                                     <TableRow>
@@ -408,10 +453,6 @@ export default function Content(props){
                         
                     </div>
 
-                    <div className='content_info'>  
-
-                        
-                    </div>
                 </>
             </StyledEngineProvider>
         )
