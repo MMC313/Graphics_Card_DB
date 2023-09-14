@@ -12,7 +12,6 @@
     padding-right: 1.5rem;
 }
 
-
 .content_header_nav_group{
     display: flex;
     justify-content: center;
@@ -26,8 +25,6 @@
 .content_header_tab{
     color: #fff;
 }
-
-    
 
 .content_header_info_headline{
     font-family: "intel-one","intel-clear",Helvetica,Arial,sans-serif;
@@ -118,6 +115,15 @@
     border: none;
 }
 
+
+#simple-tabpanel-1{
+    background-color: #f3f3f3;
+}
+
+.MuiImageList-root{
+    margin-top: 0;
+}
+
 .content_section_nav_group{
     display: none;
 }
@@ -192,6 +198,7 @@
         width: 25%;
         align-self: flex-start;
         padding-right: 30px;
+        padding-left: 12px;
     }
 
     .content_specs{
