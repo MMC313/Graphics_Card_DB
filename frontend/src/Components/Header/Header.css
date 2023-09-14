@@ -46,8 +46,12 @@ body{
 }
 
 @media (min-width: 1000px){
-    #input-with-icon-textfield{
-        width: 25vw;
+    .header_searchfield{    
+        width: 350px;
+    }
+
+    .MuiInputBase-root{
+        width: 300px;
     }
     
 }
