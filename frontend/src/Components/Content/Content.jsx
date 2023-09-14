@@ -19,6 +19,9 @@ import AMD from '../../Pictures/AMD.png'
 import Nvidia from '../../Pictures/Nvidia.png'
 import Intel from '../../Pictures/Intel.png'
 import Missing from '../../Pictures/Missing.jpeg'
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import DefaultImg from '../../Pictures/Default.jpg'
 
 
 
@@ -80,7 +83,16 @@ export default function Content(props){
     },[query])
 
     if(gpuSpec === null || gpuSpec === undefined){
-        return <div>Loading...</div>
+        return(
+            <StyledEngineProvider injectFirst>
+                <>
+                    <div className='content_default_page'>
+                        <img className='content_default_image' src={DefaultImg} alt="Default Image" />
+                        <Typography variant="h1" className='content_default_text'> LEELELELELELELELELEL </Typography>
+                    </div>
+                </>
+            </StyledEngineProvider>
+        )
     }else{
 
         console.log(gpuSpec)
@@ -168,6 +180,60 @@ export default function Content(props){
             createData('Power Connectors', gpuSpec.board_design.power_connectors),
             createData('Board Number', gpuSpec.board_design.board_number)
         ]
+
+        const itemData = [
+            {
+              img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+              title: 'Breakfast',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+              title: 'Burger',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+              title: 'Camera',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
+              title: 'Coffee',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
+              title: 'Hats',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
+              title: 'Honey',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
+              title: 'Basketball',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
+              title: 'Fern',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
+              title: 'Mushrooms',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
+              title: 'Tomato basil',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
+              title: 'Sea star',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
+              title: 'Bike',
+            },
+          ];
+
+
+
 
         return(
             <StyledEngineProvider injectFirst>
@@ -446,7 +512,18 @@ export default function Content(props){
 
                             </CustomTabPanel>
                             <CustomTabPanel value={value} index={1}>
-                                Images
+                                <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+                                    {itemData.map((item) => (
+                                        <ImageListItem key={item.img}>
+                                        <img
+                                            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                                            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                            alt={item.title}
+                                            loading="lazy"
+                                        />
+                                        </ImageListItem>
+                                    ))}
+                                </ImageList>
                             </CustomTabPanel>
                         </div>
 

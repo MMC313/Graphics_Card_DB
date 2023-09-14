@@ -1,3 +1,5 @@
+
+
 .content_header{
     background-color:#00285a;
     padding: 2rem 0 0 0;
@@ -124,6 +126,23 @@
 
 
 @media (min-width: 1000px){
+    .content_default_page{
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .content_default_image{
+        width: 100%;
+        height: auto;
+    }
+    
+    .content_default_text{
+        color: #fff;
+        position: absolute;
+        
+    }
 
     .content_info{
         display: flex;
@@ -192,6 +211,7 @@
         width: 25%;
         align-self: flex-start;
         padding-right: 30px;
+        padding-left: 24px;
     }
 
     .content_specs{
