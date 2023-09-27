@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import Header from './Components/Header/Header'
 import Content from './Components/Content/Content'
+import Footer from './Components/Footer/Footer'
 import './App.css'
-import { useEffect } from 'react'
+import { StyledEngineProvider } from '@mui/material/styles';
 
 
 
@@ -14,8 +15,13 @@ export default function App() {
 
   return(
     <>
-      <Header setQuery={setHeaderQuery}/>
-      <Content headerQuery={headerQuery}/>
+      <StyledEngineProvider injectFirst>
+        <div className='app'>
+          <Header setQuery={setHeaderQuery}/>
+          <Content headerQuery={headerQuery}/>
+          <Footer/>
+        </div>
+      </StyledEngineProvider>
     </>
   )
 }
