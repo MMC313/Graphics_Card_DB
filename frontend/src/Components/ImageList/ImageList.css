@@ -1,0 +1,17 @@
+.below_imageList{
+    width: 100%;
+}
+
+#simple-tabpanel-1{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.css-ta95xa-MuiImageListItem-root .MuiImageListItem-img{
+    object-fit: contain;
+}
+
+@media (min-width: 1200px) {
+  
+}
