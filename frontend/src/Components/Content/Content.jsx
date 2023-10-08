@@ -1,4 +1,4 @@
-import {Table, Typography, Button, ButtonGroup, TextField, InputAdornment, IconButton, Breadcrumbs, Link, Box} from '@mui/material'
+import {Table, Typography, Button, ButtonGroup, Breadcrumbs, Box} from '@mui/material'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -19,9 +19,7 @@ import AMD from '../../Pictures/AMD.png'
 import Nvidia from '../../Pictures/Nvidia.png'
 import Intel from '../../Pictures/Intel.png'
 import Missing from '../../Pictures/Missing.jpeg'
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import DefaultImg from '../../Pictures/Default.jpg'
+import ImagesList from '../ImageList/ImageList.jsx'
 
 
 
@@ -87,8 +85,7 @@ export default function Content(props){
             <StyledEngineProvider injectFirst>
                 <>
                     <div className='content_default_page'>
-                        <img className='content_default_image' src={DefaultImg} alt="Default Image" />
-                        <Typography variant="h1" className='content_default_text'> LEELELELELELELELELEL </Typography>
+                        <Typography variant="h5" className='content_default_text'> Hmm... There doesn't seem to be anything here, try searching for a valid card</Typography>
                     </div>
                 </>
             </StyledEngineProvider>
@@ -181,63 +178,10 @@ export default function Content(props){
             createData('Board Number', gpuSpec.board_design.board_number)
         ]
 
-        const itemData = [
-            {
-              img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-              title: 'Breakfast',
-            },
-            {
-              img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-              title: 'Burger',
-            },
-            {
-              img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-              title: 'Camera',
-            },
-            {
-              img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-              title: 'Coffee',
-            },
-            {
-              img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-              title: 'Hats',
-            },
-            {
-              img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-              title: 'Honey',
-            },
-            {
-              img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-              title: 'Basketball',
-            },
-            {
-              img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-              title: 'Fern',
-            },
-            {
-              img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-              title: 'Mushrooms',
-            },
-            {
-              img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-              title: 'Tomato basil',
-            },
-            {
-              img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-              title: 'Sea star',
-            },
-            {
-              img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-              title: 'Bike',
-            },
-          ];
-
-
-
 
         return(
             <StyledEngineProvider injectFirst>
-                <>
+                
                     <div className='header_nav'>
                         <Breadcrumbs
                             separator={<NavigateNextIcon fontSize="small" />}
@@ -258,34 +202,34 @@ export default function Content(props){
                                 <Typography variant='subtitle1' className='content_header_info_subtitle'>{gpuSpec.memory.memory_size +" "+ gpuSpec.memory.memory_type} Graphics Card</Typography>
                     
                             </div>
-                            <div class="content_header_stats_icons">
-                                <div class="processor content_header_stats_icon">
-                                    <div class="processor_val">{gpuSpec.graphics_processor.gpu_name}</div>
-                                    <div class="content_header_stats_icons_labels" >GRAPHICS PROCESSOR</div>
+                            <div className="content_header_stats_icons">
+                                <div className="processor content_header_stats_icon">
+                                    <div className="processor_val">{gpuSpec.graphics_processor.gpu_name}</div>
+                                    <div className="content_header_stats_icons_labels" >GRAPHICS PROCESSOR</div>
                                 </div>
-                                <div class="cores content_header_stats_icon">
-                                    <div class="cores_val">{gpuSpec.render_config.shading_units}</div>
-                                    <div class="content_header_stats_icons_labels">CORES</div>
+                                <div className="cores content_header_stats_icon">
+                                    <div className="cores_val">{gpuSpec.render_config.shading_units}</div>
+                                    <div className="content_header_stats_icons_labels">CORES</div>
                                 </div>
-                                <div class="tmus content_header_stats_icon">
-                                    <div class="tmus_val">{gpuSpec.render_config.tmus}</div>
-                                    <div class="content_header_stats_icons_labels" >TMUS</div>
+                                <div className="tmus content_header_stats_icon">
+                                    <div className="tmus_val">{gpuSpec.render_config.tmus}</div>
+                                    <div className="content_header_stats_icons_labels" >TMUS</div>
                                 </div>
-                                <div class="rops content_header_stats_icon">
-                                    <div class="rops_val">{gpuSpec.render_config.rops}</div>
-                                    <div class="content_header_stats_icons_labels">ROPS</div>
+                                <div className="rops content_header_stats_icon">
+                                    <div className="rops_val">{gpuSpec.render_config.rops}</div>
+                                    <div className="content_header_stats_icons_labels">ROPS</div>
                                 </div>
-                                <div class="memory_size content_header_stats_icon">
-                                    <div class="memory_size_val">{gpuSpec.memory.memory_size}</div>
-                                    <div class="content_header_stats_icons_labels" >MEMORY SIZE</div>
+                                <div className="memory_size content_header_stats_icon">
+                                    <div className="memory_size_val">{gpuSpec.memory.memory_size}</div>
+                                    <div className="content_header_stats_icons_labels" >MEMORY SIZE</div>
                                 </div>
-                                <div class="memory_type content_header_stats_icon">
-                                    <div class="memory_type_val">{gpuSpec.memory.memory_type}</div>
-                                    <div class="content_header_stats_icons_labels" >MEMORY TYPE</div>
+                                <div className="memory_type content_header_stats_icon">
+                                    <div className="memory_type_val">{gpuSpec.memory.memory_type}</div>
+                                    <div className="content_header_stats_icons_labels" >MEMORY TYPE</div>
                                 </div>
-                                <div class="bus_width content_header_stats_icon">
-                                    <div class="bus_width_val">{gpuSpec.memory.memory_bus}</div>
-                                    <div class="content_header_stats_icons_labels" >BUS WIDTH</div>
+                                <div className="bus_width content_header_stats_icon">
+                                    <div className="bus_width_val">{gpuSpec.memory.memory_bus}</div>
+                                    <div className="content_header_stats_icons_labels" >BUS WIDTH</div>
                                 </div>
                             </div>
                         </div>
@@ -344,7 +288,7 @@ export default function Content(props){
                                                         key={row.name}
                                                         sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
                                                         >
-                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                        <TableCell className='content_specs_label' component="th" scope="row" sx={{border:"none"}}>
                                                             {row.name}
                                                         </TableCell>
                                                         <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
@@ -366,7 +310,7 @@ export default function Content(props){
                                                         key={row.name}
                                                         sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
                                                         >
-                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                        <TableCell className='content_specs_label' component="th" scope="row" sx={{border:"none"}}>
                                                             {row.name}
                                                         </TableCell>
                                                         <TableCell  className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
@@ -388,7 +332,7 @@ export default function Content(props){
                                                         key={row.name}
                                                         sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
                                                         >
-                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                        <TableCell className='content_specs_label' component="th" scope="row" sx={{border:"none"}}>
                                                             {row.name}
                                                         </TableCell>
                                                         <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
@@ -410,7 +354,7 @@ export default function Content(props){
                                                         key={row.name}
                                                         sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
                                                         >
-                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                        <TableCell className='content_specs_label' component="th" scope="row" sx={{border:"none"}}>
                                                             {row.name}
                                                         </TableCell>
                                                         <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
@@ -432,7 +376,7 @@ export default function Content(props){
                                                         key={row.name}
                                                         sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
                                                         >
-                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                        <TableCell className='content_specs_label' component="th" scope="row" sx={{border:"none"}}>
                                                             {row.name}
                                                         </TableCell>
                                                         <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
@@ -454,7 +398,7 @@ export default function Content(props){
                                                         key={row.name}
                                                         sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
                                                         >
-                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                        <TableCell className='content_specs_label' component="th" scope="row" sx={{border:"none"}}>
                                                             {row.name}
                                                         </TableCell>
                                                         <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
@@ -476,7 +420,7 @@ export default function Content(props){
                                                         key={row.name}
                                                         sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
                                                         >
-                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                        <TableCell className='content_specs_label' component="th" scope="row" sx={{border:"none"}}>
                                                             {row.name}
                                                         </TableCell>
                                                         <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
@@ -498,7 +442,7 @@ export default function Content(props){
                                                         key={row.name}
                                                         sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
                                                         >
-                                                        <TableCell component="th" scope="row" sx={{border:"none"}}>
+                                                        <TableCell className='content_specs_label' component="th" scope="row" sx={{border:"none"}}>
                                                             {row.name}
                                                         </TableCell>
                                                         <TableCell className='content_specs_value' align="right" sx={{border:"none"}}>{row.value}</TableCell>
@@ -511,26 +455,14 @@ export default function Content(props){
                                 </div>
 
                             </CustomTabPanel>
-                            <CustomTabPanel value={value} index={1}>
-                                <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
-                                    {itemData.map((item) => (
-                                        <ImageListItem key={item.img}>
-                                        <img
-                                            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                                            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                                            alt={item.title}
-                                            loading="lazy"
-                                        />
-                                        </ImageListItem>
-                                    ))}
-                                </ImageList>
+                            <CustomTabPanel value={value} index={1} className="content_tabs tab2">
+                                <ImagesList specs={gpuSpec}/>                            
                             </CustomTabPanel>
                         </div>
 
                         
                     </div>
 
-                </>
             </StyledEngineProvider>
         )
     }

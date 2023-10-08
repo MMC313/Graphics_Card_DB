@@ -1,8 +1,33 @@
+.content_default_page{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 100%;
+   
+}
 
+
+
+.content_default_text{
+    color: black;
+    font-size: 22px;
+    font-family:"intel-one","intel-clear",Helvetica,Arial,sans-serif;
+    font-style: italic;
+    
+}
+
+
+.header_content_nav{
+    display: none;
+}
 
 .content_header{
     background-color:#00285a;
     padding: 2rem 0 0 0;
+    margin-bottom: 2rem;
 }
 
 .content_header_info{
@@ -67,6 +92,10 @@
     padding: 0;
 }
 
+.MuiBox-root{
+    border-bottom: none;
+}
+
 .MuiTable-root {
     margin-top: 20px;
 }
@@ -102,6 +131,10 @@
     border: none;
 }
 
+.content_specs_label{
+    font-weight: 700;
+}
+
 .content_specs_inner{
     overflow: hidden;
 }
@@ -118,28 +151,31 @@
     font-weight: 300;
     font-stretch:ultra-condensed;
     border: none;
+    white-space: nowrap;
 }
+
+
+
 
 .content_section_nav_group{
     display: none;
 }
 
 
-@media (min-width: 1000px){
+
+
+@media (min-width: 800px){
     .content_default_page{
         display: flex;
         position: relative;
         align-items: center;
         justify-content: center;
+        height: 100%;
+       
     }
-    
-    .content_default_image{
-        width: 100%;
-        height: auto;
-    }
-    
+
     .content_default_text{
-        color: #fff;
+        color: black;
         position: absolute;
         
     }
@@ -148,6 +184,10 @@
         display: flex;
         padding: 0 15px 0 15px;
 
+    }
+
+    .header_nav{
+        overflow:visible;
     }
 
     .content_header_nav{
@@ -211,7 +251,6 @@
         width: 25%;
         align-self: flex-start;
         padding-right: 30px;
-        padding-left: 24px;
     }
 
     .content_specs{
@@ -230,4 +269,24 @@
     }
 
 
+    .tab2{
+        display: flex;
+        justify-content: center;
+
+        
+    }
+
+}
+
+@media (min-width: 1200px){
+    .content_default_text{
+        font-size: 1.5rem;
+    }
+
+    .content_header_info, .content_header_tabs, .content_info{
+        margin-left: 5rem;
+    }
+
+
+   
 }
