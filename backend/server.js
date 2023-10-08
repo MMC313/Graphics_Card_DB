@@ -1,4 +1,4 @@
-const port = 3000
+const PORT = process.env.PORT || 3000;
 const express = require('express')
 const cors = require('cors')
 const axios = require('axios')
@@ -59,7 +59,7 @@ app.get('/results', (req,res)=>{
   
 })
 
-app.listen(port, ()=> console.log(`Server running on port:${port}`)) 
+app.listen(PORT, ()=> console.log(`Server running on port:${PORT}`)) 
 
 
 
