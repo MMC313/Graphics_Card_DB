@@ -19,7 +19,6 @@ export default function Header(props){
 
     return(
         <StyledEngineProvider injectFirst>
-            <>
                 <div className='header_search_section'>
                     <img src={logo} alt="logo of my website" className='header_logo' />
                     <div className='header_searchfield'>
@@ -38,7 +37,6 @@ export default function Header(props){
                         />
                     </div>
                 </div>
-            </>
         </StyledEngineProvider>
     )
 }
