@@ -1,8 +1,10 @@
+
+
 export default async function LoadInfo(query){
 
     console.log("loaded info")
 
-    const baseUrl ='http://localhost:3000/results?'
+    const baseUrl ='http://visualvault-backend.up.railway.app/results' 
     const options= {
         method: 'GET'
     }
