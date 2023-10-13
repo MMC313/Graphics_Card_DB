@@ -7,7 +7,14 @@
     padding-bottom: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #00285a;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100vw;
+}
+
+@media (min-width: 800px){
+    .footer{
+        position: fixed;
+        margin-top: 30px;
+    }
 }
