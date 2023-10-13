@@ -4,6 +4,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import { StyledEngineProvider } from '@mui/material/styles';
 import React, {SyntheticEvent} from 'react';
 import { useState } from 'react';
@@ -78,7 +79,7 @@ export default function ImagesList(props){
                                     sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
                                     aria-label={`info about ${item.title}`}
                                 >
-                                    <InfoIcon />
+                                    <FullscreenIcon />
                                 </IconButton>
                                 }
                             />
@@ -110,7 +111,7 @@ export default function ImagesList(props){
                                     sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
                                     aria-label={`info about ${item.title}`}
                                 >
-                                    <InfoIcon />
+                                    <FullscreenIcon />
                                 </IconButton>
                                 }
                             />
