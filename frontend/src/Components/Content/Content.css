@@ -150,18 +150,23 @@
     font-size: 1.5rem;
     line-height: 1.5rem;
     font-weight: 300;
-    font-stretch:ultra-condensed;
+    font-stretch:normal;
     border: none;
     white-space: nowrap;
 }
 
-
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+    background-color: white;
+}
 
 
 .content_section_nav_group{
     display: none;
 }
 
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+    font-size: 1rem;
+}
 
 
 
@@ -239,8 +244,14 @@
         white-space: nowrap;
     }
 
+    .content_header_stats_icons_head{
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
     .content_header_stats_icons_labels{
-        font-size: .65rem;
+        font-size: .7rem;
+        font-weight: 600;
         color: #78716c;
     }
 
@@ -267,6 +278,7 @@
     .content_tabs{
         padding-bottom: 30px;
     }    
+
 
     .MuiTableCell-root {
         width: 50%;
