@@ -204,31 +204,31 @@ export default function Content(props){
                             </div>
                             <div className="content_header_stats_icons">
                                 <div className="processor content_header_stats_icon">
-                                    <div className="processor_val">{gpuSpec.graphics_processor.gpu_name}</div>
+                                    <div className="processor_val content_header_stats_icons_head">{gpuSpec.graphics_processor.gpu_name}</div>
                                     <div className="content_header_stats_icons_labels" >GRAPHICS PROCESSOR</div>
                                 </div>
                                 <div className="cores content_header_stats_icon">
-                                    <div className="cores_val">{gpuSpec.render_config.shading_units}</div>
+                                    <div className="cores_val content_header_stats_icons_head">{gpuSpec.render_config.shading_units}</div>
                                     <div className="content_header_stats_icons_labels">CORES</div>
                                 </div>
                                 <div className="tmus content_header_stats_icon">
-                                    <div className="tmus_val">{gpuSpec.render_config.tmus}</div>
+                                    <div className="tmus_val content_header_stats_icons_head">{gpuSpec.render_config.tmus}</div>
                                     <div className="content_header_stats_icons_labels" >TMUS</div>
                                 </div>
                                 <div className="rops content_header_stats_icon">
-                                    <div className="rops_val">{gpuSpec.render_config.rops}</div>
+                                    <div className="rops_val content_header_stats_icons_head">{gpuSpec.render_config.rops}</div>
                                     <div className="content_header_stats_icons_labels">ROPS</div>
                                 </div>
                                 <div className="memory_size content_header_stats_icon">
-                                    <div className="memory_size_val">{gpuSpec.memory.memory_size}</div>
+                                    <div className="memory_size_val content_header_stats_icons_head">{gpuSpec.memory.memory_size}</div>
                                     <div className="content_header_stats_icons_labels" >MEMORY SIZE</div>
                                 </div>
                                 <div className="memory_type content_header_stats_icon">
-                                    <div className="memory_type_val">{gpuSpec.memory.memory_type}</div>
+                                    <div className="memory_type_val content_header_stats_icons_head">{gpuSpec.memory.memory_type}</div>
                                     <div className="content_header_stats_icons_labels" >MEMORY TYPE</div>
                                 </div>
                                 <div className="bus_width content_header_stats_icon">
-                                    <div className="bus_width_val">{gpuSpec.memory.memory_bus}</div>
+                                    <div className="bus_width_val content_header_stats_icons_head">{gpuSpec.memory.memory_bus}</div>
                                     <div className="content_header_stats_icons_labels" >BUS WIDTH</div>
                                 </div>
                             </div>
