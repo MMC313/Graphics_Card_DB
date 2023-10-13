@@ -86,6 +86,7 @@
 
 .content_tabs{
     background-color: #fff;
+    
 }
 
 .css-19kzrtu{
@@ -263,6 +264,10 @@
         justify-content: left;
     }
 
+    .content_tabs{
+        padding-bottom: 30px;
+    }    
+
     .MuiTableCell-root {
         width: 50%;
         white-space: nowrap;
@@ -286,6 +291,7 @@
     .content_header_info, .content_header_tabs, .content_info{
         margin-left: 5rem;
     }
+
 
 
    
