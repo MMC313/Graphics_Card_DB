@@ -7,4 +7,7 @@
     padding-bottom: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #00285a;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
 }
