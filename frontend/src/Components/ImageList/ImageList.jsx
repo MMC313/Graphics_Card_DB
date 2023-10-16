@@ -24,8 +24,6 @@ export default function ImagesList(props){
         {
           img: `https://tpucdn.com/gpu-specs/images/c/${gpuID[2]}-front.jpg`,
           title: 'Front',
-
-          featured: true,
         },
         {
           img: `https://tpucdn.com/gpu-specs/images/c/${gpuID[2]}-back.jpg`,
@@ -45,14 +43,12 @@ export default function ImagesList(props){
         },
         {
           img: `https://tpucdn.com/gpu-specs/images/c/${gpuID[2]}-top.jpg`,
-          title: 'Top',
+          title: 'Top'
 
         },
         {
           img: `https://tpucdn.com/gpu-specs/images/c/${gpuID[2]}-rear.jpg`,
-          title: 'Rear',
-    
-          featured: true,
+          title: 'Rear'
         },
       ];
 
@@ -65,7 +61,7 @@ export default function ImagesList(props){
                         <ImageListItem key={item.img}>
                             <img
                                 className='imageList_image'
-                                src={`${item.img}?w=250&fit=crop&auto=format`}
+                                src={`${item.img}?w=248&fit=crop&auto=format`}
                                 alt = {item.title}
                                 onError={(e) => (e.currentTarget.src = missingImage)}
                                 
@@ -90,7 +86,7 @@ export default function ImagesList(props){
 
       let above = (
         <StyledEngineProvider injectFirst>
-            <ImageList sx={{ width: 2/3*window.innerWidth}} cols={3}>
+            <ImageList sx={{ width: 3/4*window.innerWidth}} cols={3}>
                     {itemData.map((item) => (
                         <ImageListItem key={item.img}>
                             <img
