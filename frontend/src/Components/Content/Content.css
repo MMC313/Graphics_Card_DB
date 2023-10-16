@@ -54,6 +54,10 @@
     color: #fff;
 }
 
+.content_header_tab.Mui-selected{
+    background-color: #fff;
+}
+
     
 
 .content_header_info_headline{
@@ -155,19 +159,16 @@
     white-space: nowrap;
 }
 
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
-    background-color: white;
-}
 
 
 .content_section_nav_group{
     display: none;
 }
 
-.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+.MuiButtonGroup-grouped{
     font-size: 1rem;
+    font-weight: 600;
 }
-
 
 
 @media (min-width: 800px){
