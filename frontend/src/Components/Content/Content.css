@@ -52,6 +52,7 @@
 
 .content_header_tab{
     color: #fff;
+    font-weight: 600;
 }
 
 .content_header_tab.Mui-selected{
