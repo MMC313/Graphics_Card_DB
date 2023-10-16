@@ -65,7 +65,6 @@ export default function ImagesList(props){
                         <ImageListItem key={item.img}>
                             <img
                                 className='imageList_image'
-                                // srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                                 src={`${item.img}?w=250&fit=crop&auto=format`}
                                 alt = {item.title}
                                 onError={(e) => (e.currentTarget.src = missingImage)}
@@ -91,13 +90,12 @@ export default function ImagesList(props){
 
       let above = (
         <StyledEngineProvider injectFirst>
-            <ImageList sx={{ width: 1000, height: 500}} cols={3}>
+            <ImageList sx={{ width: 2/3*window.innerWidth}} cols={3}>
                     {itemData.map((item) => (
                         <ImageListItem key={item.img}>
                             <img
                                
                                 className='imageList_image'
-                                // srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                                 src={`${item.img}?w=248&fit=crop&auto=format`}
                                 alt={item.title}
                                 onError={(e) => (e.currentTarget.src = missingImage)}
